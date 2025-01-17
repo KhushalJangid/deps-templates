@@ -1,3 +1,4 @@
+# loc -> /etc/systemd/system/uvicorn.service
 [Unit]
 Description=uvicorn daemon
 Requires=uvicorn.socket
