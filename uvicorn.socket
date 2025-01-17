@@ -1,0 +1,7 @@
+# loc-> /etc/systemd/system/uvicorn.socket
+[Unit]
+Description=uvicorn socket
+[Socket]
+ListenStream=/run/uvicorn.sock
+[Install]
+WantedBy=sockets.target
