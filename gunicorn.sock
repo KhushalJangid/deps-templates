@@ -1,0 +1,16 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+[Service]
+User=ec2-user
+#Group=www-dataWorking
+Group=nginx
+WorkingDirectory=/home/ec2-user/app/
+ExecStart=/home/ec2-user/venv/bin/gunicorn \
+--access-logfile - \
+--workers 2 \
+--bind unix:/run/gunicorn.sock \
+config.wsgi:application
+[Install]
+WantedBy=multi-user.target

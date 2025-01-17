@@ -1,0 +1,16 @@
+[Unit]
+Description=uvicorn daemon
+Requires=uvicorn.socket
+After=network.target
+[Service]
+User=ec2-user
+#Group=www-dataWorking
+Group=nginx
+WorkingDirectory=/home/ec2-user/app/
+ExecStart=/home/ec2-user/venv/bin/uvicorn \
+--access-logfile - \
+--workers 3 \
+--bind unix:/home/ec2-user/app/uvicorn.sock \
+config.asgi:application
+[Install]
+WantedBy=multi-user.target
