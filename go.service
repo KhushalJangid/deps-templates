@@ -1,0 +1,18 @@
+[Unit]
+Description=My API Service
+ConditionPathExists=/home/ec2-user/app
+After=network.target
+
+[Service]
+Type=simple
+User=dev
+Group=dev
+
+WorkingDirectory=/home/ec2-user/app
+# Environment="YOUR_ENV_1=YOUR_ENV_1_VALUE"
+ExecStart=/home/ec2-user/app/main.exe
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
